@@ -1,17 +1,26 @@
-import { Container, HeaderAdmin, Logo, Logout, ButtonBack } from "./styles";
+import { useState } from "react";
+import { FiUpload } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "../../hooks/auth";
-import { Footer } from "../../components/Footer";
-import { Back } from "../../assets/icons/back";
 import { Input } from "../../components/Input";
+import { Back } from "../../assets/icons/back";
+import { Footer } from "../../components/Footer";
 import { TextArea } from "../../components/TextArea";
 import { IngredientItem } from "../../components/IngredientItem";
-import { FiUpload } from "react-icons/fi";
-import { useState } from "react";
+import { Container, HeaderAdmin, Logo, Logout, ButtonBack, AddPlate } from "./styles";
+
+import { api } from "../../services/api";
 
 export function New(){
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
+
+  const navigate = useNavigate();
 
   function handleAddIngredient() {
     setIngredients(prevState => [...prevState, newIngredient]);
@@ -22,6 +31,24 @@ export function New(){
     setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
   }
 
+  async function handleNewPlate() {
+    if(!name || !description || !price){
+      return alert("Preencha todos os campos!");
+    }
+
+    await api.post("/plates", {
+      name, 
+      ingredients,
+      price,
+      description
+    }).then(() => {
+      alert("Prato criado com sucesso!");
+      navigate("/");
+    })
+    .catch(error => {
+      alert("Não foi possível cadastrar.");
+    });
+  }
 
   const { signOut } = useAuth();
 
@@ -70,6 +97,7 @@ export function New(){
             <span>Nome</span>
             <Input 
             placeholder="Ex.: Salada Ceasar"
+            onChange={e => setName(e.target.value)} 
             />
           </div>
           
@@ -94,6 +122,7 @@ export function New(){
             <span>Preço</span>
             <Input 
             placeholder="R$ 00,00"
+            onChange={e => setPrice(e.target.value)}
             />
           </div>
 
@@ -101,12 +130,13 @@ export function New(){
             <span>Descrição</span>
             <TextArea 
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+            onChange={e => setDescription(e.target.value)}
             />
           </div>
 
-        <button>
-          <input type="button" value="Adicionar pedido" />
-        </button>
+        <AddPlate onClick={handleNewPlate}>
+          Adicionar pedido
+        </AddPlate>
       </main>
 
       <Footer />

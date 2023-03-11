@@ -14,7 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthProvider>
-        <New />
+        <Routes />
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

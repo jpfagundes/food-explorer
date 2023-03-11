@@ -4,7 +4,6 @@ import { api } from "../../services/api";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
 import { Container, Form, Logo } from "./styles";
-import { ButtonText } from "../../components/ButtonText";
 
 export function SignUp(){
   const [name, setName] = useState("");

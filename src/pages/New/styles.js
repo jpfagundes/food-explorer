@@ -74,3 +74,17 @@ export const ButtonBack = styled.div`
 
   align-items: center;
 `;
+
+export const AddPlate = styled.button`
+  font-family: 'Poppins', serif ;
+  font-weight: 500;
+
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.8;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+
+  color: #FFF;
+
+  padding: 0.75rem 2rem;
+`;
