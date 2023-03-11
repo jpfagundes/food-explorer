@@ -1,0 +1,30 @@
+import styled from "styled-components";
+
+export const Container = styled.button`
+  width: 100%;
+  height: 48px;
+
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Poppins', serif ;
+  font-weight: 500;
+  
+  border: 0;
+  padding: 0;
+  border-radius: 5px;
+  
+  color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
+  background-color: ${({ theme }) => theme.COLORS.RED};
+  
+  &:disabled{
+    opacity: 0.5;
+  }
+   svg {
+    margin-right: 8px;
+   }
+
+
+`;
