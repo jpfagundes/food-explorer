@@ -1,8 +1,9 @@
 
+import { useState } from "react";
 import Fruits from "../../assets/images/fruits.png";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { Section } from "../../components/Section/main";
+import { Section } from "../../components/Section";
 import { Container, Content, Rectangle } from "./styles";
 
 export function Home(){

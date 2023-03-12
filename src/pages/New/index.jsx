@@ -8,7 +8,7 @@ import { Back } from "../../assets/icons/back";
 import { Footer } from "../../components/Footer";
 import { TextArea } from "../../components/TextArea";
 import { IngredientItem } from "../../components/IngredientItem";
-import { Container, HeaderAdmin, Logo, Logout, ButtonBack, AddPlate } from "./styles";
+import { Container, HeaderAdmin, Logo, Logout, ButtonBack, AddDish } from "./styles";
 
 import { api } from "../../services/api";
 
@@ -16,6 +16,7 @@ export function New(){
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
+  const [image, setImage] = useState("");
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
@@ -31,16 +32,21 @@ export function New(){
     setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
   }
 
-  async function handleNewPlate() {
+  async function handleNewDish() {
     if(!name || !description || !price){
       return alert("Preencha todos os campos!");
     }
 
-    await api.post("/plates", {
+    if(newIngredient){
+      return alert("Você deixou um ingreditente no campo para adicionar.")
+    }
+
+    await api.post("/dishes", {
       name, 
       ingredients,
       price,
-      description
+      description,
+      image
     }).then(() => {
       alert("Prato criado com sucesso!");
       navigate("/");
@@ -90,6 +96,7 @@ export function New(){
             <Input icon={<FiUpload />}
             type="file"
             placeholder="Selecione a imagem"
+            onChange={e => setImage(e.target.value)}
             />
           </div>
 
@@ -134,9 +141,9 @@ export function New(){
             />
           </div>
 
-        <AddPlate onClick={handleNewPlate}>
+        <AddDish onClick={handleNewDish}>
           Adicionar pedido
-        </AddPlate>
+        </AddDish>
       </main>
 
       <Footer />

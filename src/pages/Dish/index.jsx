@@ -10,7 +10,7 @@ import { Receipt } from "../../assets/icons/receipt"
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
-export function Plate(){
+export function Dish(){
   const [counter, setCounter] = useState(1)
  
   function incrementCounter(){

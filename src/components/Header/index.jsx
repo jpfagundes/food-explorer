@@ -6,9 +6,23 @@ import { ButtonText } from '../ButtonText';
 import { Receipt } from '../../assets/icons/receipt';
 import { Heart } from "../../assets/icons/heart";
 import { useAuth } from "../../hooks/auth";
+import { useEffect, useState } from "react";
 
 export function Header(){
+  const [ search, setSearch ] = useState("");
+  const [ dishes, setDishes ] = useState([]);
+
+
   const { signOut } = useAuth();
+
+  useEffect(() => {
+    async function fetchDishes(){
+      const response = await api.get(`/dishes?name=${search}`);
+      setDishes(response.data);
+    }
+
+    fetchDishes();
+  }, [search])
 
   return(
     <Container>
@@ -37,6 +51,7 @@ export function Header(){
           <Input 
             icon={<Search/>}
             placeholder="Busque pelas opções de pratos"
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 

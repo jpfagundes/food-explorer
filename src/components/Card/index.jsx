@@ -3,7 +3,7 @@ import { Button } from "../Button";
 import { BoxCounter, ButtonMoreLess, Container, Counter } from "./styles";
 import { Minus } from "../../assets/icons/minus";
 import { Plus } from "../../assets/icons/plus";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 
 export function Card({ title, span, price, image}) {
   const [counter, setCounter] = useState(1)

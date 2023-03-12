@@ -1,5 +1,5 @@
 import { Carousel, Container } from "./styles";
-import { Card } from "../../components/Card";
+import { Card } from "../Card";
 import Parma from "../../assets/images/parma.png";
 import Ravanello from "../../assets/images/ravanello.png";
 import Gambe from "../../assets/images/gambe.png";

@@ -1,45 +1,39 @@
-import { Container, Content, Methods, MyOrder, Paybox, Payment } from "./styles";
-import Ravanello from "../../assets/images/ravanello.png"
-import { Pix } from "../../assets/icons/pix"
-import { Credit } from "../../assets/icons/credit"
-import { Clock } from "../../assets/icons/clock"
+import { Container } from "./styles";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import Ravanello from "../../assets/images/ravanello.png"
 
 export function Order(){
   return(
     <Container>
       <Header />
-      <MyOrder>
-      <h1>Meu Pedido</h1>
-      <div>
-        <img src={Ravanello} alt="" />
-        <h1>1 x Salada Radish</h1>
-        <h2> R$ 25,97</h2>
-        <span>Excluir</span>
-      </div>
-      <h1>Total: R$ 103,88</h1>
-      </MyOrder>
+      <div style={{
+            display: 'flex',
+            justifyContent: 'space-evenly',
+        }}>
+        <div>
+          <h1>Meu pedido</h1>
 
-      <Payment>
-        <h1>Pagamento</h1>
-        <Paybox>
-          <Methods>
-            <button>
-              <Pix />
-              <p>PIX</p>
-            </button>
-            <button>
-              <Credit />
-              <p>Crédito</p>
-            </button>
-          </Methods>
-          <Content>
-            <Clock />
-            <span>Aguardando pagamento no caixa</span>
-          </Content>
-        </Paybox>
-      </Payment>
+          <div style={{
+            display: 'flex'
+          }}>
+            <img src={Ravanello} alt="" />
+            <h2>1 x Salada Raddish</h2>
+            <p>R$ 25,97</p>
+            <span>Excluir</span>
+          </div>
+
+          <h2>Total: R$ 103,88</h2>
+        </div>
+
+        <div>
+          <h1>Pagamento</h1>
+        </div>
+
+      </div>
+
+
+
 
       <Footer />
     </Container>

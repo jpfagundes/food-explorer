@@ -75,7 +75,7 @@ export const ButtonBack = styled.div`
   align-items: center;
 `;
 
-export const AddPlate = styled.button`
+export const AddDish = styled.button`
   font-family: 'Poppins', serif ;
   font-weight: 500;
 
