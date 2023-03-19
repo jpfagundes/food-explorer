@@ -24,10 +24,21 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.GRAY};
 
       border: 0;
+
+        @media (max-width: 400px) {
+        padding: 2px
+      }
     }
 
     > svg {
       margin-left: 16px;
+      min-width: 15px;
+
+      @media (max-width: 400px) {
+        margin-left: 4px;
+      }
     }
+
+
 
 `;

@@ -3,30 +3,26 @@ import { useState } from "react";
 import Fruits from "../../assets/images/fruits.png";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { HeaderAdmin } from "../../components/HeaderAdmin";
 import { Section } from "../../components/Section";
-import { Container, Content, Rectangle } from "./styles";
+import { useAuth } from "../../hooks/auth";
+import { Container, Content } from "./styles";
 
 export function Home(){
+  const { user } = useAuth
+
   return (
     <Container>
       <Header />
-      <Rectangle>
-        <img src={Fruits} alt="" />
         <Content>
+      <div className="rectangle">
+        <img src={Fruits} alt="" />
           <h1>Sabores inigualáveis</h1>
           <span>Sinta o cuidado do preparo com ingredientes selecionados </span>
-        </Content>
-      </Rectangle>
-      <Section 
-      title="Pratos Principais"
-      />
-      <Section 
-      title="Sobremesas"
-      />
-      <Section 
-      title="Bebidas"
-      />
+      </div>
+
  
+        </Content>
       <Footer />
     </Container>
   )

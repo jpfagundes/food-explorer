@@ -1,8 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  grid-area: content;
   font-family: 'Poppins', serif;
+
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px auto 80px;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+  
 
   h1 {
     font-weight: 500;
@@ -11,7 +20,18 @@ export const Container = styled.div`
 
 `;
 
-export const Rectangle = styled.div`
+
+
+export const Content = styled.div`
+  grid-area: content;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+
+
+.rectangle {
   display: flex;
   flex: 1;
 
@@ -30,15 +50,8 @@ export const Rectangle = styled.div`
 
     overflow: visible;
   }
-  
-  
-  `;
 
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
+}
 
 
 

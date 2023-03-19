@@ -17,10 +17,25 @@ export const Container = styled.header`
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
 
+  .header {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    max-width: 80rem;
+  }
+
+  .buttons{
+    display: flex;
+    flex: 3;
+    align-items: center;
+    margin-right:2rem;
+  }
+
 `;
 
 export const Logo = styled.div`
   display: flex;
+  cursor: pointer;
 
   h1 {
     font-size: 25.11px;
