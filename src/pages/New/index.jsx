@@ -1,22 +1,30 @@
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { MdOutlineArrowBackIos } from 'react-icons/md'
 
 import { useAuth } from "../../hooks/auth";
 import { Input } from "../../components/Input";
-import { Back } from "../../assets/icons/back";
+import { ButtonTransparent } from "../../components/ButtonTransparent";
+import { Header } from "../../components/Header";
+import { HeaderAdmin } from "../../components/HeaderAdmin";
 import { Footer } from "../../components/Footer";
 import { TextArea } from "../../components/TextArea";
 import { IngredientItem } from "../../components/IngredientItem";
-import { Container, HeaderAdmin, Logo, Logout, ButtonBack, AddDish } from "./styles";
+import { Container } from "./styles";
 
 import { api } from "../../services/api";
 
 export function New(){
+  const { user } = useAuth()
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
+
+  const options = ['Prato Principal', 'Sobremesa', 'Bebida']
+  const [category,setCategory] = useState(options[0])
 
   const [ingredients, setIngredients] = useState([]);
   const [newIngredient, setNewIngredient] = useState("");
@@ -33,81 +41,100 @@ export function New(){
   }
 
   async function handleNewDish() {
+    const fileUpload = new FormData();
+
     if(!name || !description || !price){
       return alert("Preencha todos os campos!");
     }
 
-    if(newIngredient){
-      return alert("Você deixou um ingreditente no campo para adicionar.")
+    if(newIngredient.length > 0){
+      return alert("Você deixou um ingreditente pendente no campo para adicionar.")
     }
 
-    await api.post("/dishes", {
-      name, 
-      ingredients,
-      price,
-      description,
-      image
-    }).then(() => {
-      alert("Prato criado com sucesso!");
-      navigate("/");
-    })
-    .catch(error => {
-      alert("Não foi possível cadastrar.");
-    });
+      dish_id = await api.post("/dishes", {
+        name, 
+        ingredients,
+        price,
+        description,
+        },
+        fileUpload.get(dish_id)
+        )
+        
+      console.log(dish_id);
+      
+
+    fileUpload.append("image", image)
+
+
+      // await api.patch(`dishes/image/${dish_id}`, {
+      //   image
+      //   }) 
+
+        // alert("Prato criado com sucesso!");
+        // navigate("/");
   }
 
-  const { signOut } = useAuth();
+  const handleBack = () => {
+    navigate(-1)
+  }
 
   return (
     <Container>
-      <HeaderAdmin>
-        <div>
-          <Logo>
-            <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M13.0635 0.306641L25.7096 7.60782V22.2102L13.0635 29.5114L0.417527 22.2102V7.60782L13.0635 0.306641Z" fill="#065E7C"/>
-            </svg>
-            <h1>food explorer</h1>
-          </Logo>
-        </div>
-        
-        <div style={{
-          display: 'flex',
-        }}>
-        <p>Administrador</p>
-
-        <Logout onClick={signOut}>
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M18.2112 6.75L23.4612 12M23.4612 12L18.2112 17.25M23.4612 12H9.46118M9.46118 23H2.46118C2.19597 23 1.94161 22.8946 1.75408 22.7071C1.56654 22.5196 1.46118 22.2652 1.46118 22V2C1.46118 1.73478 1.56654 1.48043 1.75408 1.29289C1.94161 1.10536 2.19597 1 2.46118 1H9.46118" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        </Logout>
-        </div>
-      </HeaderAdmin>
-
+      {user.admin ? <HeaderAdmin /> : <Header/>}
       <main>
-        <ButtonBack>
-          <Back />
-          <h2>voltar</h2>
-        </ButtonBack>
+        <ButtonTransparent
+            onClick={handleBack}
+            Icon={MdOutlineArrowBackIos}
+            iconSize={20}
+            title='voltar'
+          />
 
-        <h2>Editar Prato</h2>
+        <h2>Criar Prato</h2>
 
-          <div class="addImage">
-            <span>Imagem do prato</span>
-            <Input icon={<FiUpload />}
-            type="file"
-            placeholder="Selecione a imagem"
-            onChange={e => setImage(e.target.value)}
-            />
-          </div>
+        
+        <div className="wrapper">
+            <div className="files">
+              <span>Imagem do Prato</span>
+              <label 
+                htmlFor="plate-name" ><FiUpload size={24}/> Selecione imagem 
+              </label>
+              <input 
+                type="file"
+                id="plate-name" name="plate-name"
+                accept="image/png, image/jpeg"/>
+            </div>
+
 
           <div>
-            <span>Nome</span>
+            <p>Nome</p>
             <Input 
             placeholder="Ex.: Salada Ceasar"
-            onChange={e => setName(e.target.value)} 
+            onChange={e => setName(e.target.value)}
+            required
             />
           </div>
-          
+
+            <div className=" select">
+              <span htmlFor="food_type">Categoria</span>
+                <select 
+                  value={category}
+                  onChange={(e)=>setCategory(e.target.value)}
+                >
+                  {
+                    options.map((option, index) => (
+                      <option value={option} key={String(index)}>
+                        {option}
+                      </option>
+                    ))
+                  }
+                </select>
+            </div>
+        </div>
+
+      <div className="wrapper">
+        <div className="ingredients">
+          <span>Ingredientes</span>
+          <div className="tags">
           {
             ingredients.map((ingredient, index) => (
               <IngredientItem 
@@ -123,27 +150,35 @@ export function New(){
           value={newIngredient}
           onChange= { e => setNewIngredient(e.target.value)}
           onClick={handleAddIngredient}
+          placeholder="Ingredientes"
           />
+          </div>
+
+        </div>
+          
 
           <div>
-            <span>Preço</span>
+            <p>Preço</p>
             <Input 
             placeholder="R$ 00,00"
             onChange={e => setPrice(e.target.value)}
             />
           </div>
+      </div>
 
           <div>
-            <span>Descrição</span>
+            <p>Descrição</p>
             <TextArea 
             placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
             onChange={e => setDescription(e.target.value)}
             />
           </div>
 
-        <AddDish onClick={handleNewDish}>
-          Adicionar pedido
-        </AddDish>
+        <button 
+        className="addDish"
+        onClick={handleNewDish}>
+          Criar Prato
+        </button>
       </main>
 
       <Footer />

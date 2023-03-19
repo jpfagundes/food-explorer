@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { Container, Form, Logo } from "./styles";
+import { Container } from "./styles";
+import {BsHexagonFill} from "react-icons/bs";
 
 export function SignUp(){
   const [name, setName] = useState("");
@@ -15,6 +16,10 @@ export function SignUp(){
   function handleSignUp(){
     if(!name || !email || !password){
       return alert("Preencha todos os campos!");
+    }
+
+    if(password.length < 6) {
+      return alert("A senha deve ter no mínimo 6 caracteres.")
     }
 
     api.post("/users", { name, email, password })
@@ -33,14 +38,15 @@ export function SignUp(){
 
   return (
     <Container>
-      <Logo>
-        <svg width="44" height="48" viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.0318 0.216492L43.4349 12.0918V35.8425L22.0318 47.7179L0.628698 35.8425V12.0918L22.0318 0.216492Z" fill="#065E7C"/>
-        </svg>
+      <div className="logo">
+          <BsHexagonFill 
+          size={40}
+          color="#065E7C"
+          />
+          <h1>Food Explorer</h1>
+      </div>
 
-          <h1>food explorer</h1>
-      </Logo>
-      <Form>
+      <div className="form">
         <h1>Crie sua conta</h1>
         <div>
           <span>Seu nome</span>
@@ -77,7 +83,7 @@ export function SignUp(){
         <Link to="/">
         Já tenho uma conta
         </Link>
-      </Form>
+      </div>
 
     </Container>
   );

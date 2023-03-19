@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
-import { Container, Form, Logo } from "./styles";
+import { Container } from "./styles";
+import {BsHexagonFill} from "react-icons/bs";
 import { useAuth } from "../../hooks/auth";
 
 export function SignIn(){
@@ -16,14 +17,15 @@ export function SignIn(){
 
   return (
     <Container>
-      <Logo>
-        <svg width="44" height="48" viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M22.0318 0.216492L43.4349 12.0918V35.8425L22.0318 47.7179L0.628698 35.8425V12.0918L22.0318 0.216492Z" fill="#065E7C"/>
-        </svg>
+      <div className="logo">
+          <BsHexagonFill 
+          size={40}
+          color="#065E7C"
+          />
+          <h1>Food Explorer</h1>
+      </div>
 
-          <h1>food explorer</h1>
-      </Logo>
-      <Form> 
+      <div className="form"> 
         <h1>Faça login</h1>
         <div>
           <span>Email</span>
@@ -50,7 +52,7 @@ export function SignIn(){
         />
 
         <a href="/register"> Criar uma conta</a>
-      </Form>
+      </div>
     </Container>
   );
 }

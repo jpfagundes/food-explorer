@@ -4,9 +4,20 @@ export const Container = styled.div`
 
   width: 100%;
   height: 100vh;
+
+  display: grid;
+  grid-template-rows: 100px auto 80px;
+
+  grid-template-areas: 
+    "header"
+    "content"
+    "footer";
   
   main {
     font-family: 'Roboto', serif;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
   }
 
    button input {
@@ -16,75 +27,106 @@ export const Container = styled.div`
     border-radius: 5px;
   }
 
-
-`;
-
-export const HeaderAdmin = styled.div`
-  font-family: 'Roboto',serif;
-  font-weight: 700;
-
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_HEADER};
-
-
-  p {
-    font-weight: 400;
-    margin: 0 1rem;
+  span, p {
+    margin-bottom: 8px;
   }
 
-`;
-
-export const Logo = styled.div`
-  display: flex;
-
-  h1 {
-    font-size: 1.5694rem;
-    height: 1.8125rem;
+  h2 {
+    margin: 10px 0;
   }
 
-  > svg {
-    font-size: 1rem;
-    margin-right: 0.75rem;
+  .wrapper {
+    display: flex;
+    gap: 30px;
+    width: 100%;
   }
 
-  @media (max-width: 26rem) {
-    > h1 {
+  .files {
+    display: flex;
+    flex-direction: column;
+
+    input[type='file']{
       display: none;
     }
+
+    label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+
+      border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+      border-radius: 5px;
+
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 24px;  
+
+      cursor: pointer;
+    }
   }
-`;
 
-export const Logout = styled.button`
-  border: none;
-  background: none;
+  .select {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
 
-  margin-left: 2rem;
+    line-height: 16px;
 
-`;
+    select {
+      background: none;
+      height: 51px;
+      border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+      border-radius: 5px;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+      padding: 10px 10px;
+    }
 
-export const ButtonBack = styled.div`
-  display: flex;
+    option {
+      background-color: #192227;
+    }
 
-  align-items: center;
-`;
+    }
 
-export const AddDish = styled.button`
+    .ingredients {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    line-height: 16px;
+  }
+
+  .tags {
+    display: flex;
+    min-height: 48px;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: transparent;
+    padding: 5px;
+
+    border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+    border-radius: 5px;
+  }
+
+  .addDish {
   font-family: 'Poppins', serif ;
   font-weight: 500;
+
+  width: 30%;
+  align-self: flex-end;
 
   background: rgba(255, 255, 255, 0.1);
   opacity: 0.8;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
 
+  margin-bottom: 8px;
+
   color: #FFF;
 
   padding: 0.75rem 2rem;
+  }
+
 `;

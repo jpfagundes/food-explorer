@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: fit-content;
-  height: 3.2rem;
+  height: 36px;
+
   padding: 0.8rem 1.6rem;
   border-radius: 0.5rem;
 
@@ -18,6 +18,8 @@ export const Container = styled.div`
 
   > input {
     color: ${({ theme }) => theme.COLORS.WHITE};
+    font-size: 0.9rem;
+    max-width: 110px;
     background: transparent;
     border: none;
 

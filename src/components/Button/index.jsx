@@ -1,14 +1,17 @@
 import { Container } from "./styles";
+import { useAuth } from "../../hooks/auth"
 
-export function Button({title, icon, loading = false, ...rest }){
+export function Button({title, icon, ...rest }){
+  const {loading} = useAuth()
   return (
     <Container 
       type="button"
-      disabled={loading}
+      disabled={loading === true ? true : false}
+      loading={loading === true ? true : false}
       {...rest}
       >
-        { icon ? icon : null}
-        { loading ? "Carregando..." : title}
+        { icon ? icon : null }
+        {loading === true ? "Carregando" : title}
     </Container>
   );
 }

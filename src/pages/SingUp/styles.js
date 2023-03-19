@@ -5,38 +5,46 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  
-  `;
 
-export const Logo = styled.div`
+  @media (max-width: 540px) {
+    display: block;
+    
+  }
+  
+
+  .logo {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   font-family: 'Roboto', serif;
   font-weight: 700;
 
   h1 {
-    font-size: 25.11px;
-    height: 29px;
+    font-size: 2rem;
   }
 
   svg {
-    margin-right: 12px;
+    margin-right: 0.75rem;
   }
 
-`;
+  @media (max-width: 540px) {
+    margin-bottom: 8px;
+  }
 
-export const Form = styled.form`
+  }
+
+  .form {
   display: flex;
   flex-direction: column;
 
   align-items: center;
   text-align: center;
 
-  padding:64px;
+  gap: 1.6rem;
 
-  width: 476px;
-  height: 540.76px;
+  max-width: 47rem;
+  padding: 6.4rem;
 
   border-radius: 16px;
 
@@ -56,7 +64,6 @@ export const Form = styled.form`
   }
 
   span {
-    padding-top: 32px;
     margin-bottom: 8px;
   }
 
@@ -70,4 +77,13 @@ export const Form = styled.form`
     font-family: 'Roboto', serif;
     display: flex;
   }
-`;
+
+  @media (max-width: 540px) {
+    padding: 3rem;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+}
+  `;

@@ -21,6 +21,11 @@ export const Container = styled.div`
     align-self: flex-end;
   }
 
+  .icon {
+    align-self: flex-end;
+    margin-right: 15px;
+  }
+
   h1 {
     font-family: 'Poppins', serif;
     font-weight: 700;
@@ -63,7 +68,6 @@ export const Counter = styled.div`
   margin-right: 0.5rem;
 
   span {
-    font-family: 'Roboto', serif;
     font-size: 20px;
 
     padding: 0 0.5rem;

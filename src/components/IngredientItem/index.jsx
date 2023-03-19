@@ -9,7 +9,6 @@ export function IngredientItem({ isNew = false, value, onClick, ...rest}) {
     type="text" 
     value={value}
     readOnly={!isNew}
-    placeholder="Adicionar"
     {...rest}
     />
 

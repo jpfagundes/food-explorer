@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   width: 100%;
-  height: 48px;
+  max-height: 50px;
 
   display: flex;
   flex: 1;
@@ -13,8 +13,9 @@ export const Container = styled.button`
   font-weight: 500;
   
   border: 0;
-  padding: 0;
+  padding: 12px;
   border-radius: 5px;
+  line-height: 24px;
   
   color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
   background-color: ${({ theme }) => theme.COLORS.RED};
