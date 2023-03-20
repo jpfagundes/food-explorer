@@ -41,7 +41,7 @@ export const Container = styled.header`
 
 `;
 
-export const NewPlateButton = styled.button`
+export const NewDishButton = styled.button`
   background: transparent;
   border: none;
 

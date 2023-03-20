@@ -6,7 +6,7 @@ export const Container = styled.div`
   height: 100vh;
 
   display: grid;
-  grid-template-rows: 100px auto 80px;
+  grid-template-rows: 70px auto 80px;
 
   grid-template-areas: 
     "header"
@@ -20,6 +20,15 @@ export const Container = styled.div`
     flex-direction: column;
   }
 
+  svg {
+    min-width: 26px;
+    min-height: 30px;
+  }
+
+  button {
+    margin: 16px;
+  }
+
    button input {
     background: rgba(255, 255, 255, 0.1);
     opacity: 0.8;
@@ -28,11 +37,11 @@ export const Container = styled.div`
   }
 
   span, p {
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 
   h2 {
-    margin: 10px 0;
+    margin-top: 10px;
   }
 
   .wrapper {
@@ -65,6 +74,10 @@ export const Container = styled.div`
 
       cursor: pointer;
     }
+  }
+
+  .input-name{
+    width: 72.5%;
   }
 
   .select {
@@ -127,6 +140,26 @@ export const Container = styled.div`
   color: #FFF;
 
   padding: 0.75rem 2rem;
+  }
+
+  @media(max-width:426px ) {
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-name {
+      width: 100%;
+    }
+
+    button {
+      margin: 0
+    }
+
+    .addDish{
+      width: 100%;
+    }
   }
 
 `;

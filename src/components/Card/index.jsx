@@ -5,9 +5,45 @@ import { Minus } from "../../assets/icons/minus";
 import { Plus } from "../../assets/icons/plus";
 import { useState } from "react";
 import { ButtonTransparent } from "../ButtonTransparent";
+import { useNavigate } from "react-router-dom";
+import { api } from "../../services/api";
 
-export function Card({ title, description, price, image}) {
+export function Card({ title, image, id, description, price, setAllOrders, setFavoriteP, favoriteP,  ...rest}) {
   const [counter, setCounter] = useState(1)
+
+  const navigate = useNavigate()
+
+  const [favorite, setFavorite] = useState(() => {
+    const localData = localStorage.getItem("@foodexplorer:favorites")
+
+    if(localData){
+
+      const favorites = JSON.parse(localData)
+      const isFavorite = favorites.filter(dish => dish == id)
+
+      if(isFavorite.length === 1){
+        return true
+      }
+    }
+
+    return false
+  })
+
+  const handleFavorites = () =>{
+    setFavorite(!favorite)
+    
+    if(favorite){
+      const favoriteFiltered = favoriteP.filter(dish => dish !== id)
+      setFavoriteP(favoriteFiltered)
+
+    }else{
+      setFavoriteP(prevState => [ ...prevState, id])
+    }
+  }
+
+  const handleDetails = () => {
+    navigate(`/details/${id}`)
+  }
 
   function incrementCounter(){
     setCounter(counter + 1)
@@ -18,20 +54,49 @@ export function Card({ title, description, price, image}) {
       setCounter(counter - 1)
     }
   }
+
+  const handleAllQuantity = () => {
+    const dishes = {
+      id:id,
+      name: title,
+      image: image,
+      price: price,
+      quantity: quantity,
+    }
+
+    const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
+    
+    if(!savedDishes){
+      setAllOrders(prevState =>[...prevState, dishes])
+    }
+    
+    const filteredSavedDishes = savedDishes.filter(p => p.id !== dishes.id)
+
+    setAllOrders(filteredSavedDishes)
+
+    setAllOrders(prevState =>[...prevState, dishes])
+
+  }
   
   return(
-    <Container>
+    <Container {...rest}>
 
       <ButtonTransparent 
-      Icon={AiOutlineHeart}
+      Icon={favorite ? AiFillHeart :  AiOutlineHeart}
       className='icon'
       iconSize={30}
+      iconColor={favorite ? 'red' : ''}
+      onClick={() => handleFavorites(id)}
       />
+
       <div>
-        { image ? (<img src={image} />) : null }
-        <h1>{title}</h1>
+        <img src={`${api.defaults.baseURL}/dishes/${image}`} alt="dish image" />
+        <ButtonTransparent 
+        title={title}
+        onClick={handleDetails}
+        />
         <span>{description}</span>
-        <h2>{price}</h2>
+        <h2>R$ {price}</h2>
       </div>
       <BoxCounter>
         <Counter>
@@ -47,6 +112,7 @@ export function Card({ title, description, price, image}) {
         </Counter>
         <Button 
         title="incluir"
+        onClick={handleAllQuantity}
         />
       </BoxCounter>
     </Container>

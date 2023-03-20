@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 36px;
 
-  padding: 0.8rem 1.6rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
 
   display: flex;

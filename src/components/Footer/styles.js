@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.footer`
   grid-area: footer;
   width: 100%;
-  height: 77px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 123px ;
+  padding: 0 120px ;
 
   background: ${({ theme}) => theme.COLORS.BACKGROUND_HEADER };
 

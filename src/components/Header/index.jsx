@@ -14,7 +14,7 @@ export function Header(){
   const [ search, setSearch ] = useState("");
   const [ dishes, setDishes ] = useState([]);
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
 
   function handleHome(){

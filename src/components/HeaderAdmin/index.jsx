@@ -2,13 +2,18 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { Search } from "../../assets/icons/search";
 import { useAuth } from "../../hooks/auth";
 import { Input } from "../Input";
-import { Container, Logo, Logout, NewPlateButton } from "./styles";
+import { Container, Logo, Logout, NewDishButton } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 
 export function HeaderAdmin(){
 
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
+
+    function handleNew(){
+      navigate("/create")
+    }
 
     function handleHome(){
       navigate("/")  
@@ -28,10 +33,10 @@ export function HeaderAdmin(){
         </li>
 
         <li>
-          <NewPlateButton>
+          <NewDishButton onClick={handleNew}>
             <AiOutlinePlus />
             <h1>Novo Prato</h1>
-          </NewPlateButton>
+          </NewDishButton>
         </li>
 
         <li className="input">

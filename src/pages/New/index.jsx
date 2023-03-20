@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { MdOutlineArrowBackIos } from 'react-icons/md'
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 import { useAuth } from "../../hooks/auth";
 import { Input } from "../../components/Input";
@@ -40,6 +40,11 @@ export function New(){
     setIngredients(prevState => prevState.filter(ingredient => ingredient !== deleted));
   }
 
+
+  function handleImage(e){
+    setImage(e.target.files[0])
+  }
+
   async function handleNewDish() {
     const fileUpload = new FormData();
 
@@ -51,18 +56,13 @@ export function New(){
       return alert("Você deixou um ingreditente pendente no campo para adicionar.")
     }
 
-      dish_id = await api.post("/dishes", {
+      await api.post("/dishes", {
         name, 
         ingredients,
         price,
         description,
-        },
-        fileUpload.get(dish_id)
-        )
+        })
         
-      console.log(dish_id);
-      
-
     fileUpload.append("image", image)
 
 
@@ -70,8 +70,8 @@ export function New(){
       //   image
       //   }) 
 
-        // alert("Prato criado com sucesso!");
-        // navigate("/");
+        alert("Prato criado com sucesso!");
+        navigate("/");
   }
 
   const handleBack = () => {
@@ -96,16 +96,16 @@ export function New(){
             <div className="files">
               <span>Imagem do Prato</span>
               <label 
-                htmlFor="plate-name" ><FiUpload size={24}/> Selecione imagem 
+                htmlFor="dish-name" ><FiUpload size={24}/> Selecione imagem 
               </label>
               <input 
                 type="file"
-                id="plate-name" name="plate-name"
+                id="dish-name" name="dish-name"
+                onChange={handleImage}
                 accept="image/png, image/jpeg"/>
             </div>
 
-
-          <div>
+          <div className="input-name">
             <p>Nome</p>
             <Input 
             placeholder="Ex.: Salada Ceasar"
