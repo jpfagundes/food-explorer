@@ -130,7 +130,7 @@ export function Details(){
   return (
     <Container>
 
-      {user.admin ? <HeaderAdmin/> : <Header allQuantity={allQuantity}/>}
+      <Header allQuantity={allQuantity}/>
 
       <Content>
 

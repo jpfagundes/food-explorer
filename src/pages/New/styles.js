@@ -159,6 +159,7 @@ export const Container = styled.div`
 
     .addDish{
       width: 100%;
+      margin-bottom: 30px;
     }
   }
 

@@ -37,4 +37,9 @@ export const Container = styled.footer`
     padding: 0 8px;
   }
 
+  @media (max-width: 400px) {
+    flex-direction: column;
+    padding: 10px;
+  }
+
 `;

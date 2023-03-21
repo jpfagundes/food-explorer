@@ -10,27 +10,63 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
-export function Header(){
+export function Header({ handleShowFavorites, allQuantity, setDishes , favoriteTitle='Favoritos'}){
   const [ search, setSearch ] = useState("");
-  const [ dishes, setDishes ] = useState([]);
 
   const navigate = useNavigate();
 
+  const { signOut } = useAuth();
 
   function handleHome(){
     navigate("/")  
   }
 
-  const { signOut } = useAuth();
+  function handlePayment(){
+    navigate("/payment")
+  }
 
-  useEffect(() => {
-    async function fetchDishes(){
-      const response = await api.get(`/dishes?name=${search}`);
-      setDishes(response.data);
+  async function handleSignOut() {
+    const response = await api.get("/favorites")
+    const favoriteList = localStorage.getItem("@foodexplorer:favorites")
+
+    if(favoriteList.length !== 0){
+      if(!response.data.favoriteList){
+        await api.post("/favorites", {favoriteList} )
+      } else {
+        console.log(favoriteList + '2')
+        await api.put("/favorites", {favoriteList} )
+      }
     }
 
-    fetchDishes();
-  }, [search])
+
+    localStorage.removeItem("@foodexplorer:favorites")
+
+    navigate("/")
+    signOut()
+  }
+
+  useEffect(()=> {
+    if(search.length > 0 && window.location.pathname == '/') {
+      async function fetchDishes(){  
+        const response = await api.get(`/dishes?name=${search}`)
+    
+        setDishes(response.data)
+      }
+
+      fetchDishes()
+    } else if(search.length == 0 ){
+
+      if(setDishes){
+
+      async function fetchDishes() {
+        const response = await api.get(`/dishes`)
+
+        setDishes(response.data)
+      }
+      fetchDishes()
+      }
+    }
+  },[search])
 
   return(
     <Container>
@@ -45,6 +81,7 @@ export function Header(){
           <ButtonText 
             icon={<Heart/>}
             title="Meus favoritos"
+            onClick={handleShowFavorites}
           />
           <Input 
             icon={<Search/>}
@@ -54,11 +91,12 @@ export function Header(){
         </div>
 
         <Button 
-        icon={<Receipt/>}
-        title="Meu pedido (0)"
+          icon={<Receipt/>}
+          title={`Meu pedido (${allQuantity})`}
+          onClick={handlePayment}
         />
 
-        <Logout onClick={signOut}>
+        <Logout onClick={handleSignOut}>
         <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.2112 6.75L23.4612 12M23.4612 12L18.2112 17.25M23.4612 12H9.46118M9.46118 23H2.46118C2.19597 23 1.94161 22.8946 1.75408 22.7071C1.56654 22.5196 1.46118 22.2652 1.46118 22V2C1.46118 1.73478 1.56654 1.48043 1.75408 1.29289C1.94161 1.10536 2.19597 1 2.46118 1H9.46118" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>

@@ -12,7 +12,7 @@ import { Container, Content } from "./styles";
 import { api } from "../../services/api";
 
 export function Home(){
-  const { user } = useAuth
+  const { user } = useAuth();
 
   const [favoriteP, setFavoriteP] = useState(() => {
     const localData = localStorage.getItem("@foodexplorer:favorites")
@@ -39,7 +39,7 @@ export function Home(){
     return localData ? JSON.parse(localData) : []
   })
 
-  const handleShowFavorites = async () => {
+  async function handleShowFavorites() {
 
     if(!favoriteP){
       return alert('Não há pratos favoritos')
@@ -130,7 +130,12 @@ export function Home(){
 
   return (
     <Container>
-      <HeaderAdmin />
+      {user.admin ? <HeaderAdmin /> 
+      :  
+      <Header
+      handleShowFavorites={handleShowFavorites}
+      allQuantity={allQuantity}
+      /> }
 
       <Content>
         

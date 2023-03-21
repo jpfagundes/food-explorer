@@ -1,17 +1,19 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+
   width: 100%;
   height: 100vh;
+
   display: grid;
-  grid-template-rows: 70px auto 80px;
+  grid-template-rows: 104px auto 80px;
   grid-template-areas:
-    'header'
-    'content'
-    'footer';
+    "header"
+    "content"
+    "footer";
 
   @media (max-width: 1024px) {
-    grid-template-rows: 200px auto 70px;
+  grid-template-rows: 200px auto 70px;
   }
   @media (max-width: 400px) {
     grid-template-rows: auto auto 70px;
@@ -104,9 +106,9 @@ export const Content = styled.div`
       .valueAndQuantity {
         display: flex;
         align-items: center;
-        margin-top: 40px;
+        margin-top: 20px;
         display: flex;
-        gap: 50px;
+        gap: 40px;
 
         h4 {
           font-size: 1.7rem;
