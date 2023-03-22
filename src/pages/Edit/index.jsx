@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiUpload } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 
 import { useAuth } from "../../hooks/auth";
@@ -15,7 +15,9 @@ import { Container } from "./styles";
 
 import { api } from "../../services/api";
 
-export function New(){
+export function Edit(){
+  const params = useParams();
+
   const { user } = useAuth()
 
   const [name, setName] = useState("");
@@ -45,7 +47,7 @@ export function New(){
     setImage(e.target.files[0])
   }
 
-  async function handleNewDish() {
+  async function handleEditDish() {
     const fileUpload = new FormData();
 
     if(!name || !description || !price || !category || !image){
@@ -56,7 +58,7 @@ export function New(){
       return alert("Você deixou um ingrediente pendente no campo para adicionar.")
     }
 
-      await api.post("/dishes", {
+      await api.put(`/dishes/${params.id}`, {
         name, 
         ingredients,
         price,
@@ -71,13 +73,33 @@ export function New(){
       //   image
       //   }) 
 
-        alert("Prato criado com sucesso!");
+        alert("Prato editado com sucesso!");
         navigate("/");
   }
 
   function handleHome() {
     navigate("/")
   }
+
+  function fetchData () {
+    api.get(`/dishes/${params.id}`)
+    .then(
+      response => {
+        setDescription(response.data.description)
+        setName(response.data.name)
+        setPrice(response.data.price)
+        setCategory(response.data.category)
+
+        const newIng =response.data.ingredients.map(item => item.name)
+        setIngredients(newIng)
+      })
+
+
+  }
+
+    useEffect(() => {
+      fetchData()
+    },[])
 
   return (
     <Container>
@@ -109,7 +131,7 @@ export function New(){
           <div className="input-name">
             <p>Nome</p>
             <Input 
-            placeholder="Ex.: Salada Ceasar"
+            placeholder={name}
             onChange={e => setName(e.target.value)}
             required
             />
@@ -161,7 +183,7 @@ export function New(){
           <div>
             <p>Preço</p>
             <Input 
-            placeholder="R$ 00,00"
+            placeholder={price}
             onChange={e => setPrice(e.target.value)}
             />
           </div>
@@ -170,15 +192,15 @@ export function New(){
           <div>
             <p>Descrição</p>
             <TextArea 
-            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+            placeholder={description}
             onChange={e => setDescription(e.target.value)}
             />
           </div>
 
         <button 
         className="addDish"
-        onClick={handleNewDish}>
-          Criar Prato
+        onClick={handleEditDish}>
+          Editar Prato
         </button>
       </main>
 

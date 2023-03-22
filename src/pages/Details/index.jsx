@@ -3,16 +3,13 @@ import { useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { ButtonTransparent } from "../../components/ButtonTransparent";
 import { Header } from "../../components/Header";
-import { HeaderAdmin } from "../../components/HeaderAdmin";
 import { Footer } from "../../components/Footer";
-import { useAuth } from "../../hooks/auth";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { api } from "../../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import { Receipt } from "../../assets/icons/receipt";
 
 export function Details(){
-  const { user } = useAuth()
   const params = useParams()
 
 
@@ -88,8 +85,8 @@ export function Details(){
 
   }
 
-  function handleBack(){
-    navigate(-1)
+  function handleHome(){
+    navigate("/")
   }
 
   const handleQuantity = () => {
@@ -116,7 +113,7 @@ export function Details(){
   },[allOrders])
 
   useEffect(()=> {
-    const fetchOrder = async () => {
+    async function fetchOrder() {
       const response = await api.get(`/dishes/${params.id}`)
 
       setOrder(response.data)
@@ -138,7 +135,7 @@ export function Details(){
             Icon={MdOutlineArrowBackIos}
             iconSize={30}
             title='voltar'
-            onClick={handleBack}
+            onClick={handleHome}
           />
 
 

@@ -33,7 +33,6 @@ export function Header({ handleShowFavorites, allQuantity, setDishes , favoriteT
       if(!response.data.favoriteList){
         await api.post("/favorites", {favoriteList} )
       } else {
-        console.log(favoriteList + '2')
         await api.put("/favorites", {favoriteList} )
       }
     }

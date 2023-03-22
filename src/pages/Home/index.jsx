@@ -59,7 +59,7 @@ export function Home(){
     setShowFavorites(!showFavorites)
   }
 
-  const handleQuantity = () => {
+  function handleQuantity() {
     let sum = 0
     allOrders.forEach(dish => {
       sum += Number(dish.quantity)
@@ -68,7 +68,7 @@ export function Home(){
   }
 
   useEffect(() =>{
-    const fetchDishes = async () => {
+    async function fetchDishes() {
       const response = await api.get('/dishes')
       setDishes(response.data)
     }
@@ -77,7 +77,7 @@ export function Home(){
   }, [])
 
   useEffect( ()=>{
-    const fetchFavorites = async () => {
+    async function fetchFavorites() {
 
       const responseFavorites = await api.get("/favorites")
       
@@ -108,8 +108,8 @@ export function Home(){
      },[allOrders])
    
      useEffect(()=> {
-       const selectDishes = () => {
-         const main = dishes.filter(dish => dish.category == 'Prato Principal')
+       function selectDishes() {
+         const main = dishes.filter(dish => dish.category == "Prato Principal")
          setMainDishes(main)
    
          const dessert = dishes.filter(dish => dish.category == 'Sobremesa')

@@ -4,6 +4,7 @@ import { Home } from '../pages/Home';
 import { Details } from '../pages/Details';
 import { Payment } from '../pages/Payment';
 import { New } from "../pages/New";
+import { Edit } from "../pages/Edit";
 
 import { useAuth } from '../hooks/auth'
 
@@ -15,13 +16,15 @@ export function AppRoutes() {
   const handleRoutes = () => {
     if(user.admin){
       return (
-      <Routes >
+        <Routes >
 
-      <Route path="/" element={<Home />} />
-      <Route path="/create" element={<New />} />
-      <Route path="/details/:id" element={<Details />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/create" element={<New />} />
+        <Route path="/details/:id" element={<Details />} />
+        <Route path="/edit/:id" element={<Edit />} />
 
-      </Routes>
+
+        </Routes>
 
       )
     } else {
