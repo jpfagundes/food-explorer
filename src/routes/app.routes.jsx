@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 
+import { New } from "../pages/New";
 import { Home } from '../pages/Home';
+import { Edit } from "../pages/Edit";
 import { Details } from '../pages/Details';
 import { Payment } from '../pages/Payment';
-import { New } from "../pages/New";
-import { Edit } from "../pages/Edit";
+import { NotFound } from "../pages/NotFound";
 
 import { useAuth } from '../hooks/auth'
 
@@ -22,6 +23,7 @@ export function AppRoutes() {
         <Route path="/create" element={<New />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/edit/:id" element={<Edit />} />
+        <Route path="*" element={<NotFound />} />
 
 
         </Routes>
@@ -34,6 +36,8 @@ export function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="*" element={<NotFound />} />
+
 
         </Routes>
       )

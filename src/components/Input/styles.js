@@ -21,7 +21,7 @@ export const Container = styled.div`
       gap: 10px;
       padding: 14px;
 
-      color: ${({ theme }) => theme.COLORS.GRAY};
+      color: ${({ theme }) => theme.COLORS.WHITE};
 
       border: 0;
 
