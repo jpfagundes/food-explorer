@@ -67,9 +67,10 @@ export function Home(){
     setAllQuantity(sum)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     async function fetchDishes() {
-      const response = await api.get('/dishes')
+      const response = await api.get('/dishes?name')
+      console.log(response.data)
       setDishes(response.data)
     }
     fetchDishes()

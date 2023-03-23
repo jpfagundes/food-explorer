@@ -9,6 +9,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
+  justify-content: space-evenly;
+
   gap: 16px;
   margin: 0.5rem 1rem ;
   
@@ -33,6 +35,11 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.COLORS.WHITE}
   }
 
+  span {
+    font-size: 14px;
+    color: ${({ theme }) => theme.COLORS.GRAY}
+  }
+
   span, h2 {
     font-family: 'Roboto', serif;
     font-weight: 400;
@@ -50,6 +57,12 @@ export const Container = styled.div`
 
       margin-bottom: 16px;
     }
+  }
+
+  .informations {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
 
@@ -76,11 +89,13 @@ export const Counter = styled.div`
 
 export const BoxCounter = styled.div`
   width: 100%;
-
   padding: 0 2rem;
 
   display: flex;
-  flex: 1;
-
   align-items: center;
+  
+  span {
+  color: ${({ theme }) => theme.COLORS.WHITE};
+
+  }
 `;

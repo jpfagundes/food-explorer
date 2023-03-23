@@ -6,12 +6,11 @@ export const Container = styled.button`
 
   display: flex;
   gap: 5px;
-
+  justify-content: center;
   align-items: center;
   text-align: center;
   font-family: 'Poppins', serif;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 24px;
   color: ${({ theme }) => theme.COLORS.WHITE};
-  line-height: 14px;
 `

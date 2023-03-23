@@ -91,12 +91,14 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
 
       <div>
         <img src={`${api.defaults.baseURL}/dishes/${image}`} alt="dish image" />
+        <div className="informations">
         <ButtonTransparent 
         title={title}
         onClick={handleDetails}
         />
         <span>{description}</span>
         <h2>R$ {price}</h2>
+        </div>
       </div>
       <BoxCounter>
         <Counter>

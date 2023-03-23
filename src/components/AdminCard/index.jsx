@@ -10,7 +10,7 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
   const navigate = useNavigate()
 
   function handleDetails() {
-    navigate(`/att/${id}`)
+    navigate(`/edit/${id}`)
   }
 
   async function handleDelete() {

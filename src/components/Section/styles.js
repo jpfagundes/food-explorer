@@ -6,11 +6,10 @@ export const Container = styled.div`
   font-size: 40px;
 
   h1 {
-    margin: 40px 0;
-    line-height: 44px;
-    font-size: 14px;
-    font-weight: 500;
     font-family: ${({ theme }) => theme.COLORS.WHITE};
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 20px 0;
   }
   .rec-arrow {
     color: #fff !important;

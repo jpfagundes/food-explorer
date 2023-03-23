@@ -46,7 +46,8 @@ export function New(){
   }
 
   async function handleNewDish() {
-    const fileUpload = new FormData();
+    try {
+      const fileUpload = new FormData();
 
     if(!name || !description || !price || !category || !image){
       return alert("Preencha todos os campos!");
@@ -56,7 +57,7 @@ export function New(){
       return alert("Você deixou um ingrediente pendente no campo para adicionar.")
     }
 
-      await api.post("/dishes", {
+      const {data: {dish_id}} = await api.post("/dishes", {
         name, 
         ingredients,
         price,
@@ -64,15 +65,22 @@ export function New(){
         category
         })
         
-    fileUpload.append("image", image)
+      fileUpload.append("image", image)
 
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
 
-      // await api.patch(`dishes/image/${dish_id}`, {
-      //   image
-      //   }) 
+      await api.patch(`/dishes/image/${dish_id}`, fileUpload, config) 
 
-        alert("Prato criado com sucesso!");
-        navigate("/");
+      alert("Prato criado com sucesso!");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   function handleHome() {
