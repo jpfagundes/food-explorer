@@ -50,10 +50,6 @@ export function Edit(){
   async function handleEditDish() {
     const fileUpload = new FormData();
 
-    if(!name || !description || !price || !category || !image){
-      return alert("Preencha todos os campos!");
-    }
-
     if(newIngredient.length > 0){
       return alert("Você deixou um ingrediente pendente no campo para adicionar.")
     }
@@ -68,13 +64,16 @@ export function Edit(){
         
     fileUpload.append("image", image)
 
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
 
-      // await api.patch(`dishes/image/${dish_id}`, {
-      //   image
-      //   }) 
+    await api.patch(`/dishes/image/${params.id}`, fileUpload, config) 
 
-        alert("Prato editado com sucesso!");
-        navigate("/");
+    alert("Prato editado com sucesso!");
+    navigate("/");
   }
 
   function handleHome() {

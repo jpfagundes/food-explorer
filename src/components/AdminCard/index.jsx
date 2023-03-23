@@ -16,7 +16,11 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
   async function handleDelete() {
     try{
       await api.delete(`/dishes/${id}`)
-      return alert("Prato deletado.")
+
+      alert("Prato deletado.")
+      
+      return navigate("/")
+
     } catch {
       return alert("Erro, favor tentar novamente.")
     }

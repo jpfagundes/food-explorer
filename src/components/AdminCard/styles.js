@@ -24,22 +24,20 @@ export const Container = styled.div`
 
   .name {
     color: ${({ theme }) => theme.COLORS.WHITE};
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 700;
-    font-size: 2.4rem;
-    line-height: 32px;
+    font-size: 24px;
   }
 
   p {
+    font-family: 'Roboto', sans-serif;
     text-align: center;
-    font-weight: 400;
-    font-size: 1.4rem;
-    line-height: normal;
+    font-size: 14px;
     color: ${({ theme }) => theme.COLORS.GRAY};
   }
 
   h4 {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     color: #82f3ff;
     font-size: 2rem;
     line-height: 50px;

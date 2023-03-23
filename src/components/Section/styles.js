@@ -9,14 +9,15 @@ export const Container = styled.div`
     font-family: ${({ theme }) => theme.COLORS.WHITE};
     font-size: 2rem;
     font-weight: 500;
-    margin: 20px 0;
+    margin: 20px 0 20px 25px;
   }
   .rec-arrow {
-    color: #fff !important;
+    font-size: 1.5rem;
+    color: #fff;
     background-color: transparent !important;
     box-shadow: none !important;
   }
   .rec-arrow:hover {
-    color: ${({ theme }) => theme.COLORS.BLUE} !important;
+    color: ${({ theme }) => theme.COLORS.BLUE} ;
   }
 `

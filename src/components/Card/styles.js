@@ -28,8 +28,13 @@ export const Container = styled.div`
     margin-right: 15px;
   }
 
+  .name {
+    justify-content: center;
+    font-size: 24px;
+  }
+
   h1 {
-    font-family: 'Poppins', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 24px;
     color: ${({ theme }) => theme.COLORS.WHITE}
@@ -41,7 +46,7 @@ export const Container = styled.div`
   }
 
   span, h2 {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
   }
 

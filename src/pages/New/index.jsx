@@ -46,8 +46,7 @@ export function New(){
   }
 
   async function handleNewDish() {
-    try {
-      const fileUpload = new FormData();
+    const fileUpload = new FormData();
 
     if(!name || !description || !price || !category || !image){
       return alert("Preencha todos os campos!");
@@ -77,10 +76,7 @@ export function New(){
 
       alert("Prato criado com sucesso!");
       navigate("/");
-    } catch (error) {
-      console.log(error);
-      
-    }
+ 
   }
 
   function handleHome() {

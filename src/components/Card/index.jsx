@@ -92,7 +92,8 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
       <div>
         <img src={`${api.defaults.baseURL}/dishes/${image}`} alt="dish image" />
         <div className="informations">
-        <ButtonTransparent 
+        <ButtonTransparent
+        className="name"
         title={title}
         onClick={handleDetails}
         />

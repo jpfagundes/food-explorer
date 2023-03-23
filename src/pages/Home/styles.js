@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  font-family: 'Poppins', serif;
+  font-family: 'Poppins', sans-serif;
 
   width: 100%;
   height: 100vh;
@@ -11,6 +11,8 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
+
+    overflow-x: hidden;
 `;
 
 

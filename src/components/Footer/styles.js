@@ -13,7 +13,7 @@ export const Container = styled.footer`
 
   > div {
     display: flex;
-    font-family:'Roboto', serif;
+    font-family:'Roboto', sans-serif;
     font-weight: 700;
     font-size: 12px;
     color: rgba(255, 255, 255, 0.3);
@@ -28,7 +28,7 @@ export const Container = styled.footer`
   }
 
   span {
-    font-family: 'DM Sans', serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 400;
     font-size: 14px;
   }

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.header`
   grid-area: header;
 
-  font-family: 'Roboto',serif;
+  font-family: 'Roboto',sans-serif;
 
   display: flex;
 
@@ -50,7 +50,7 @@ export const NewDishButton = styled.button`
 
   align-items: center;
   text-align: center;
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   color: ${({ theme }) => theme.COLORS.WHITE};
 
   h1 {

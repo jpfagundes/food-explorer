@@ -17,7 +17,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
 
   h1 {
@@ -51,14 +51,14 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.COLORS.BACKGROUND_FORM};
     
   h1 {
-    font-family: 'Poppins', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 32px;
   }
   
 
   a {
-    font-family: 'Poppins', serif;
+    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     color: #fff;
   }
@@ -68,13 +68,13 @@ export const Container = styled.div`
   }
 
   input {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 16px;
   }
 
   > div span {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     display: flex;
   }
 

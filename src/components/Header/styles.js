@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.header`
   grid-area: header;
 
-  font-family: 'Roboto',serif;
+  font-family: 'Roboto',sans-serif;
   font-weight: 700;
 
   display: flex;

@@ -53,11 +53,11 @@ export const Content = styled.div`
     }
 
     .infos {
-      font-family: 'Roboto', serif;
+      font-family: 'Roboto', sans-serif;
       color: ${({ theme }) => theme.COLORS.WHITE};
 
       h2 {
-        font-family: 'Poppins', serif;
+        font-family: 'Poppins', sans-serif;
         font-weight: 500;
         font-size: 40px;
       }
@@ -75,7 +75,7 @@ export const Content = styled.div`
       }
 
       h5 {
-        font-family: 'Poppins', serif;
+        font-family: 'Poppins', sans-serif;
         font-size: 18px;
         font-weight: 400;
 

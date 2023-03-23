@@ -9,7 +9,7 @@ export const Container = styled.button`
   justify-content: center;
   align-items: center;
 
-  font-family: 'Poppins', serif ;
+  font-family: 'Poppins', sans-serif ;
   font-weight: 500;
   
   border: 0;

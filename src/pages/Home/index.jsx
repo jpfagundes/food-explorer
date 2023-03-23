@@ -289,7 +289,7 @@ export function Home(){
                     key={drink.id}
                     id={drink.id}
                     className='card'
-                    title={drink.title}
+                    title={drink.name}
                     image={drink.image}
                     description={drink.description}
                     price={drink.price}

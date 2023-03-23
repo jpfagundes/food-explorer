@@ -14,7 +14,7 @@ export const Container = styled.div`
     "footer";
   
   main {
-    font-family: 'Roboto', serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0 10px;
     display: flex;
     flex-direction: column;
@@ -124,7 +124,7 @@ export const Container = styled.div`
   }
 
   .addDish {
-  font-family: 'Poppins', serif ;
+  font-family: 'Poppins', sans-serif ;
   font-weight: 500;
 
   width: 30%;
