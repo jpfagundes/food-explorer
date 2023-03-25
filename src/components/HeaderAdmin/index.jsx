@@ -1,29 +1,61 @@
+import { Container, Logo, Logout, NewDishButton } from "./styles";
 import { AiOutlinePlus } from "react-icons/ai";
 import { Search } from "../../assets/icons/search";
 import { useAuth } from "../../hooks/auth";
 import { Input } from "../Input";
-import { Container, Logo, Logout, NewDishButton } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../Button";
+import { useState } from "react";
+import { useEffect } from "react";
+import { api } from "../../services/api";
 
 
-export function HeaderAdmin(){
+export function HeaderAdmin({setDishes}){
+  const [ search, setSearch ] = useState("");
 
   const navigate = useNavigate();
   const { signOut } = useAuth();
 
+  function handleHome(){
+    navigate("/")  
+  }
 
-    function handleNew(){
-      navigate("/create")
-    }
+  function handleNew(){
+    navigate("/create")
+  }
 
-    function handleHome(){
-      navigate("/")  
-    }
+  function handleOrders(){
+    navigate("/orders")
+  }
 
-    function handleSignOut(){
-      navigate("/")
-      signOut()
+
+  function handleSignOut(){
+    navigate("/")
+    signOut()
+  }
+
+    useEffect(()=> {
+    if(search.length > 0 && window.location.pathname == '/') {
+      async function fetchDishes(){  
+        const response = await api.get(`/dishes?name=${search}`)
+    
+        setDishes(response.data)
+      }
+
+      fetchDishes()
+    } else if(search.length == 0 ){
+
+      if(setDishes){
+
+      async function fetchDishes() {
+        const response = await api.get(`/dishes?name=${search}`)
+
+        setDishes(response.data)
+      }
+      fetchDishes()
+      }
     }
+  },[search])
 
   return(
     <Container>
@@ -49,6 +81,13 @@ export function HeaderAdmin(){
             icon={<Search/>}
             placeholder="Busque pelas opções de pratos"
             onChange={(e) => setSearch(e.target.value)}
+          />
+        </li>
+
+        <li>
+          <Button 
+          title="Pedidos"
+          onClick={handleOrders}
           />
         </li>
 

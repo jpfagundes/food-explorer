@@ -8,6 +8,7 @@ import { Payment } from '../pages/Payment';
 import { NotFound } from "../pages/NotFound";
 
 import { useAuth } from '../hooks/auth'
+import { Orders } from "../pages/Orders";
 
 
 export function AppRoutes() {
@@ -22,7 +23,9 @@ export function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<New />} />
         <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
+
 
         </Routes>
 

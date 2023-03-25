@@ -19,7 +19,7 @@ export function PayBox({status, allOrders}){
 
   const [ paymentMethod, setPaymentMethod ] = useState(status)
 
-  const changePayment = async () => {
+  async function changePayment () {
     if(allOrders.length === 0 ){
       return alert("O carrinho está vazio.")
 
@@ -36,9 +36,14 @@ export function PayBox({status, allOrders}){
         status,
         description: JSON.stringify(newData)
       })
+
+
       localStorage.removeItem("@foodexplorer:dishes")
+
       setPaymentMethod("aproved")
+
       navigate("/")
+
       return alert("Pedido efetuado")
     }
   }

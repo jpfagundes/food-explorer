@@ -130,7 +130,7 @@ export function Home(){
 
   return (
     <Container>
-      {user.admin ? <HeaderAdmin /> 
+      {user.admin ? <HeaderAdmin setDishes={setDishes}/> 
       :  
       <Header
       handleShowFavorites={handleShowFavorites}

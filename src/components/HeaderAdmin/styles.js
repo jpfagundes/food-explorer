@@ -95,6 +95,4 @@ export const Logout = styled.button`
   border: none;
   background: none;
 
-  margin-left: 2rem;
-
 `;
