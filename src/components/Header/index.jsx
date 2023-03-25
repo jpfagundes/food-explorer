@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
-export function Header({ handleShowFavorites, allQuantity, setDishes , favoriteTitle='Favoritos'}){
+export function Header({ handleShowFavorites, allQuantity, setDishes}){
   const [ search, setSearch ] = useState("");
 
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ export function Header({ handleShowFavorites, allQuantity, setDishes , favoriteT
       if(setDishes){
 
       async function fetchDishes() {
-        const response = await api.get(`/dishes`)
+        const response = await api.get(`/dishes?name=${search}`)
 
         setDishes(response.data)
       }

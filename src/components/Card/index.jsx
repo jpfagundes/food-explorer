@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 
 export function Card({ title, image, id, description, price, setAllOrders, setFavoriteP, favoriteP,  ...rest}) {
-  const [counter, setCounter] = useState(1)
+  const [quantity, setQuantity] = useState(1)
 
   const navigate = useNavigate()
 
@@ -29,7 +29,9 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
     return false
   })
 
-  const handleFavorites = () =>{
+  
+
+  function handleFavorites (){
     setFavorite(!favorite)
     
     if(favorite){
@@ -46,35 +48,41 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
   }
 
   function incrementCounter(){
-    setCounter(counter + 1)
+    setQuantity(prevState => prevState + 1)
   }
 
   function decrementCounter(){
-    if (counter > 1) {
-      setCounter(counter - 1)
+    if (quantity > 1) {
+      setQuantity(prevState => prevState - 1)
     }
   }
 
-  const handleAllQuantity = () => {
-    const dishes = {
-      id:id,
-      name: title,
-      image: image,
-      price: price,
-      quantity: quantity,
-    }
-
-    const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
-    
-    if(!savedDishes){
+  function  handleAllQuantity() {
+    try {
+      const dishes = {
+        id:id,
+        name: title,
+        image: image,
+        price: price,
+        quantity: quantity,
+      }
+  
+      const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
+      
+      if(!savedDishes){
+        setAllOrders(prevState =>[...prevState, dishes])
+      }
+      
+      const filteredSavedDishes = savedDishes.filter(p => p.id !== dishes.id)
+  
+      setAllOrders(filteredSavedDishes)
+  
       setAllOrders(prevState =>[...prevState, dishes])
+  
+      return("Prato adicionado")
+    } catch (error) {
+      console.log(error)
     }
-    
-    const filteredSavedDishes = savedDishes.filter(p => p.id !== dishes.id)
-
-    setAllOrders(filteredSavedDishes)
-
-    setAllOrders(prevState =>[...prevState, dishes])
 
   }
   
@@ -107,7 +115,7 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
           <Minus />
           </ButtonMoreLess>
           <span>
-          {counter}
+          {quantity.toString().padStart(2,0)}
           </span>
           <ButtonMoreLess onClick={incrementCounter}>
           <Plus />

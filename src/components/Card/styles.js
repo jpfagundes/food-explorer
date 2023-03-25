@@ -100,6 +100,7 @@ export const BoxCounter = styled.div`
   align-items: center;
   
   span {
+  font-weight: 700;
   color: ${({ theme }) => theme.COLORS.WHITE};
 
   }

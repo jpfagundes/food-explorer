@@ -70,7 +70,6 @@ export function Home(){
   useEffect(() => {
     async function fetchDishes() {
       const response = await api.get('/dishes?name')
-      console.log(response.data)
       setDishes(response.data)
     }
     fetchDishes()
@@ -136,6 +135,7 @@ export function Home(){
       <Header
       handleShowFavorites={handleShowFavorites}
       allQuantity={allQuantity}
+      setDishes={setDishes}
       /> }
 
       <Content>

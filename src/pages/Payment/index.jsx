@@ -13,23 +13,42 @@ export function Payment(){
   const [ value, setValue ] = useState(0)
   const navigate = useNavigate()
 
+  const [ allQuantity, setAllQuantity ] = useState(0)
+
   const [ allOrders, setAllOrders ] = useState(() =>{
-    const localData = localStorage.getItem("@foodexplorer:dish")
+    const localData = localStorage.getItem("@foodexplorer:dishes")
     return localData ? JSON.parse(localData) : []
   })
 
+  function handleQuantity() {
+    let sum = 0
+    allOrders.forEach(dish => {
+      sum += Number(dish.quantity)
+    });
+    setAllQuantity(sum)
+  }
+  
   function removeDish (id) {
-
+    
     const filteredAllOrders = allOrders.filter(dish => dish.id !== id)
-
+    
     setAllOrders(filteredAllOrders)
-
+    
     localStorage.setItem("@foodexplorer:dishes", JSON.stringify(filteredAllOrders))
   }
-
+  
   function handleHome(){
     navigate("/")
   }
+
+  useEffect(() => {
+  const dish = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
+
+  if(dish){
+    setAllOrders(dish)
+    handleQuantity()
+  }
+},[])
 
   useEffect(()=> {
     let sum = 0
@@ -41,7 +60,7 @@ export function Payment(){
 
   return(
     <Container>
-      <Header />
+      <Header allQuantity={allQuantity} />
 
       <Content >
           <div className="orders"> 
@@ -74,18 +93,7 @@ export function Payment(){
                 ))
             }
             <div className='foods'>
-                    <img src="https://avatars.githubusercontent.com/u/79283163?v=4" alt="food image" />
-                    <div>
-                      <div className="infos">
-                        <span className="quantity">1 x</span>
-                        <span className="name">Salada Raddish</span>
-                        <span className="value"> R$ 25,97</span>
-                      </div>
 
-                      <ButtonTransparent
-                        title='Excluir'
-                      />
-                    </div>
                 </div>
             </div>
 

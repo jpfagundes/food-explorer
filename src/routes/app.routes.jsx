@@ -21,10 +21,8 @@ export function AppRoutes() {
 
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<New />} />
-        <Route path="/details/:id" element={<Details />} />
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="*" element={<NotFound />} />
-
 
         </Routes>
 
