@@ -9,7 +9,7 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
 
   const navigate = useNavigate()
 
-  function handleDelete() {
+  function handleEdit() {
     navigate(`/edit/${id}`)
   }
 
@@ -43,7 +43,7 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
         <ButtonTransparent
         className="name"
         title={title}
-        onClick={handleDelete}
+        onClick={handleEdit}
         />
         <span>{description}</span>
         <h2>R$ {price}</h2>
