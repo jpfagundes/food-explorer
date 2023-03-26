@@ -4,15 +4,22 @@ import { Button } from "../../components/Button";
 import { Container } from "./styles";
 import {BsHexagonFill} from "react-icons/bs";
 import { useAuth } from "../../hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn(){
   const [email, setEmail ] = useState("");
   const [password, setPassword ] = useState("");
 
+  const navigate = useNavigate();
+
   const { signIn } = useAuth();
 
   function handleSignIn(){
     signIn({ email, password });
+  }
+
+  function handleRegister() {
+    navigate("/register");
   }
 
   return (
@@ -51,7 +58,7 @@ export function SignIn(){
           onClick={handleSignIn}
         />
 
-        <a href="/register"> Criar uma conta</a>
+        <a onClick={handleRegister}> Criar uma conta</a>
       </div>
     </Container>
   );

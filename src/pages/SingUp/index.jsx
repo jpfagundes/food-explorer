@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
@@ -34,6 +34,10 @@ export function SignUp(){
         alert("Não foi possível cadastrar.");
       }
     });
+  }
+
+  function handleSignIn() {
+    navigate("/")
   }
 
   return (
@@ -80,9 +84,9 @@ export function SignUp(){
         onClick={handleSignUp}
         />
 
-        <Link to="/">
+        <a onClick={handleSignIn}>
         Já tenho uma conta
-        </Link>
+        </a>
       </div>
 
     </Container>
