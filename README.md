@@ -7,7 +7,9 @@
 
 ## Screenshot
 
-![App Screenshot](https://imgur.com/a/rGB8CwB)
+ <h1 align="center">
+  <img alt="Food Explorer" title="Food Explorer" src="https://imgur.com/a/rGB8CwB" />
+</h1>
 
 
 ## Project description
@@ -20,9 +22,10 @@
 
 ### How to use
 
-- To use this project you need to clone this repository and clone https://github.com/jpfagundes/backend-food-explorer ,
-  then in both : 
+- To use this project you need to clone this repository and clone https://github.com/jpfagundes/backend-food-explorer 
+
 ```bash
+  Then in both : 
   npm run dev
 ```
 
