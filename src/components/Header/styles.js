@@ -22,6 +22,16 @@ export const Container = styled.header`
     flex: 1;
     align-items: center;
     max-width: 80rem;
+
+    @media (max-width: 585px) {
+    .button-receipt {
+      p {
+        display: none;
+      }
+      svg {
+        margin: 0;
+      }
+    }}
   }
 
   .buttons{

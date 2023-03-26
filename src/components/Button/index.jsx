@@ -9,7 +9,7 @@ export function Button({title,loading = false, icon, ...rest }){
       {...rest}
       >
         { icon ? icon : null }
-        {loading ? "Carregando" : title}
+        <p>{loading ? "Carregando" : title}</p>
     </Container>
   );
 }

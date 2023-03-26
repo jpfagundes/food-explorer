@@ -23,4 +23,8 @@ export const Container = styled.button`
       display: none;
     }
   }
+
+  @media (max-width: 426px) {
+    padding: 0 0.5rem;
+  }
 `;

@@ -90,6 +90,7 @@ export function Header({ handleShowFavorites, allQuantity, setDishes}){
         </div>
 
         <Button 
+          className="button-receipt"
           icon={<Receipt/>}
           title={`Meu pedido (${allQuantity})`}
           onClick={handlePayment}

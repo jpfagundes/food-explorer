@@ -11,6 +11,13 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
+
+    header {
+      position: fixed;
+      width: 100%;
+      height: 68px;
+      z-index: 1;
+    }
 `;
 
 
