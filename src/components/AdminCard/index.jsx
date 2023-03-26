@@ -9,7 +9,7 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
 
   const navigate = useNavigate()
 
-  function handleDetails() {
+  function handleDelete() {
     navigate(`/edit/${id}`)
   }
 
@@ -37,17 +37,18 @@ export function AdminCard({title, image, id, description, price , ...rest}) {
         onClick={handleDelete}
       />
 
-      <img src={`${api.defaults.baseURL}/dishes/${image}`} alt="dish image" />
-      
-      <ButtonTransparent
-        className='name'
+      <div>
+        <img src={`${api.defaults.baseURL}/dishes/${image}`} alt="dish image" />
+        <div className="informations">
+        <ButtonTransparent
+        className="name"
         title={title}
-        onClick={handleDetails}
-
-      />
-      <p>{description}</p>
-
-      <h4>R$ {price}</h4>
+        onClick={handleDelete}
+        />
+        <span>{description}</span>
+        <h2>R$ {price}</h2>
+        </div>
+      </div>
     </Container>
   )
 }
