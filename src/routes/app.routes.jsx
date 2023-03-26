@@ -26,7 +26,6 @@ export function AppRoutes() {
         <Route path="/orders" element={<Orders />} />
         <Route path="*" element={<NotFound />} />
 
-
         </Routes>
 
       )
@@ -38,7 +37,6 @@ export function AppRoutes() {
         <Route path="/details/:id" element={<Details />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<NotFound />} />
-
 
         </Routes>
       )

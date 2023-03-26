@@ -15,7 +15,7 @@ export const Container = styled.div`
     grid-template-rows: 100px auto 80px;
   }
   @media (max-width: 400px) {
-    grid-template-rows: auto auto 80px;
+    grid-template-rows: 100px auto 80px;
   }
 `
 
@@ -27,7 +27,6 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1280px;
-  height: 60vh;
 
 
   h2 {
@@ -35,7 +34,7 @@ export const Content = styled.div`
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-weight: 500;
     font-size: 2rem;
-    margin-bottom: 30px;
+    margin: 10px;
   }
   table,
   tr,
@@ -108,6 +107,12 @@ export const Content = styled.div`
 
   span {
     font-size: 1rem;
+  }
+
+  @media (max-width: 570px) {
+    th {
+      font-size: 1rem
+    }
   }
 
   @media (max-width: 1000px) {

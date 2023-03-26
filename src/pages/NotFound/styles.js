@@ -52,7 +52,7 @@ export const Container = styled.div`
     height: 35px;
   }
 
-  @media(max-width: 400px) {
+  @media(max-width: 426px) {
     flex-direction: column;
     
     img {

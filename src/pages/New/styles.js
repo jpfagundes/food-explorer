@@ -26,7 +26,7 @@ export const Container = styled.div`
   }
 
   button {
-    margin: 16px;
+    margin: 8px;
   }
 
    button input {

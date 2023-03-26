@@ -13,10 +13,10 @@ export const Container = styled.div`
     "footer";
 
   @media (max-width: 1024px) {
-  grid-template-rows: 200px auto 70px;
+  grid-template-rows: 100px auto 80px;
   }
-  @media (max-width: 400px) {
-    grid-template-rows: auto auto 70px;
+  @media (max-width: 426px) {
+    grid-template-rows: 100px auto 80px;
   }
 `
 
@@ -28,7 +28,6 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1280px;
-  height: 75vh;
 
 
   > button {
@@ -49,7 +48,7 @@ export const Content = styled.div`
     display: flex;
     gap: 60px;
     img {
-      height: 350px;
+      height: 250px;
     }
 
     .infos {
@@ -63,7 +62,6 @@ export const Content = styled.div`
       }
 
       p {
-        font-weight: 400;
         font-size: 22px;
 
         margin-bottom: 20px;
@@ -138,19 +136,21 @@ export const Content = styled.div`
     }
   }
 
-  @media (max-width: 1000px) {
-    padding: 20px;
-    .info-dish {
-      img {
-        height: 250px;
-      }
-    }
-  }
-  @media (max-width: 400px) {
+
+  @media (max-width: 426px) {
     .info-dish {
       flex-direction: column;
-      img {
-        height: auto;
+      text-align: center;
+      align-items: center;
+      gap: 40px;
+
+      li {
+        justify-content: center;
+      }
+
+      .dish-img {
+        width: 250px;;
+        height: 250px;
       }
 
       .valueAndQuantity {
@@ -162,10 +162,11 @@ export const Content = styled.div`
           > div {
             width: 100%;
             display: flex;
-            justify-content: center;
-            font-size: 2.6rem;
           }
         }
+
+        gap: 20px;
+        margin-bottom: 30px;
       }
     }
   }

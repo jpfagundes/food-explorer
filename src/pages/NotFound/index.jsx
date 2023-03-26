@@ -1,9 +1,11 @@
 import { Container } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
 import Image404 from "../../assets/images/404.png";
 
 
 export function NotFound() {
+  const { user } = useAuth()
 
   const navigate = useNavigate();
 
@@ -13,6 +15,10 @@ export function NotFound() {
 
   function handlePayment() {
     navigate("/payment")
+  }
+
+  function handleNewDish(){
+    navigate("/create")
   }
 
 
@@ -33,9 +39,17 @@ export function NotFound() {
           <button onClick={handleHome}>
             Home
           </button>
+
+          {user.admin ? 
+          <button onClick={handleNewDish}>
+            Novo Prato
+          </button> :  
+
           <button onClick={handlePayment}>
             Meu pedido
           </button>
+          }
+          
         </div>
       </div>
 

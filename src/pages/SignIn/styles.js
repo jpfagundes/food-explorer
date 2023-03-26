@@ -7,8 +7,8 @@ export const Container = styled.div`
   justify-content: space-around;
 
   @media (max-width: 540px) {
-    display: block;
-    
+    display: flex;
+    flex-direction: column;
   }
   
 
@@ -29,7 +29,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 540px) {
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 
   }

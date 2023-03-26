@@ -18,16 +18,16 @@ export function Details(){
   const [ allQuantity, setAllQuantity ] = useState(0)
 
   const [ allOrders, setAllOrders ] = useState(() =>{
-    const localData = localStorage.getItem("@dishes")
+    const localData = localStorage.getItem("@foodexplorer:dishes")
     return localData ? JSON.parse(localData) : []
   })
   const [quantity, setQuantity] = useState(1) 
 
-  function handleAddQuantity(){
+  function incrementCounter(){
     setQuantity(prevState => prevState + 1)
   }
 
-  function handleRemoveQuantity() {
+  function decrementCounter() {
     if(quantity <= 1){  
       setQuantity(1)
       return alert('Quantidade mínima é 1')
@@ -38,7 +38,7 @@ export function Details(){
   const navigate = useNavigate()
 
 
-  const handleAllQuantity = () => {
+  function handleAllQuantity (){
     const order = {
       quantity: quantity,
       id: '01',
@@ -71,7 +71,7 @@ export function Details(){
     
     }
 
-    const savedDishes = JSON.parse(localStorage.getItem("@dishes"))
+    const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
     
     if(!savedDishes){
       setAllOrders(order)
@@ -98,19 +98,13 @@ export function Details(){
   }
 
   useEffect(() => {
-    const dish = JSON.parse(localStorage.getItem("@dishes"))
+    const dish = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
 
     if(dish){
       setAllOrders(dish)
       handleQuantity()
     }
   },[])
-
-  useEffect(() => {
-    localStorage.setItem("@dishes",JSON.stringify(allOrders))
-    handleQuantity()
-
-  },[allOrders])
 
   useEffect(()=> {
     async function fetchOrder() {
@@ -141,7 +135,7 @@ export function Details(){
 
         {order && 
         <div className="info-dish">
-          <img src={`${api.defaults.baseURL}/dishes/${order.image}`}  alt="image dish" />
+          <img src={`${api.defaults.baseURL}/dishes/${order.image}`} className="dish-img" alt="image dish" />
 
           <div className="infos">
             <h2>{order.name}</h2>
@@ -162,11 +156,11 @@ export function Details(){
 
               <div className="quantity">
                 <div>
-                  <button onClick={handleRemoveQuantity}>
+                  <button onClick={decrementCounter}>
                    &minus;
                   </button>
                   <span>{quantity.toString().padStart(2,0)}</span>
-                  <button onClick={handleAddQuantity}>
+                  <button onClick={incrementCounter}>
                     &#43;
                   </button>
                 </div>

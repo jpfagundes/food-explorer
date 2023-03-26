@@ -26,11 +26,11 @@ export const Content = styled.div`
 
   width: 100%;
   max-width: 1280px;
-  height: 70vh;
 
 
   display: flex;
   justify-content: space-between;
+  gap: 16px;
 
   h1, h2 {
     font-family: 'Poppins', sans-serif;
@@ -107,18 +107,19 @@ export const Content = styled.div`
 
   }
 
-  .payments {
+  .payment {
 
     width: 100%;
     max-width: 600px;
 
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 
+    margin-bottom: 16px;
   }
 
-  @media(max-width: 400px) {
+  @media(max-width: 426px) {
     flex-direction: column;
     ;
   }

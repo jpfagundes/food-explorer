@@ -57,38 +57,30 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
     }
   }
 
-  function  handleAllQuantity() {
-    try {
-      const dishes = {
-        id:id,
-        name: title,
-        image: image,
-        price: price,
-        quantity: quantity,
-      }
-  
-      const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
-      
-      if(!savedDishes){
-        setAllOrders(prevState =>[...prevState, dishes])
-      }
-      
-      const filteredSavedDishes = savedDishes.filter(p => p.id !== dishes.id)
-  
-      setAllOrders(filteredSavedDishes)
-  
-      setAllOrders(prevState =>[...prevState, dishes])
-  
-      return("Prato adicionado")
-    } catch (error) {
-      console.log(error)
+  function handleAllQuantity() {
+    const dishes = {
+      id:id,
+      name: title,
+      image: image,
+      price: price,
+      quantity: quantity,
     }
+  
+    const savedDishes = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
+    
+    if(!savedDishes){
+      setAllOrders(prevState =>[...prevState, dishes])
+    }
+    
+    const filteredSavedDishes = savedDishes.filter(p => p.id !== dishes.id)
 
-  }
+    setAllOrders(filteredSavedDishes)
+
+    setAllOrders(prevState =>[...prevState, dishes])
+}
   
   return(
     <Container {...rest}>
-
       <ButtonTransparent 
       Icon={favorite ? AiFillHeart :  AiOutlineHeart}
       className='icon'
@@ -109,6 +101,7 @@ export function Card({ title, image, id, description, price, setAllOrders, setFa
         <h2>R$ {price}</h2>
         </div>
       </div>
+
       <BoxCounter>
         <Counter>
           <ButtonMoreLess onClick={decrementCounter}>

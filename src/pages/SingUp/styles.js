@@ -7,7 +7,8 @@ export const Container = styled.div`
   justify-content: space-around;
 
   @media (max-width: 540px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
     
   }
   
@@ -29,7 +30,7 @@ export const Container = styled.div`
   }
 
   @media (max-width: 540px) {
-    margin-bottom: 8px;
+    margin: 8px 0;
   }
 
   }
@@ -41,10 +42,10 @@ export const Container = styled.div`
   align-items: center;
   text-align: center;
 
-  gap: 1.6rem;
+  gap: 1.5rem;
 
   max-width: 47rem;
-  padding: 6.4rem;
+  padding: 6rem;
 
   border-radius: 16px;
 

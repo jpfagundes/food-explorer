@@ -2,16 +2,13 @@ import { Container, Content } from "./styles";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { ButtonTransparent } from "../../components/ButtonTransparent";
-import { MdOutlineArrowBackIos } from "react-icons/md"
 import { useState } from "react";
 import { useEffect } from "react";
 import { api } from "../../services/api";
 import { PayBox } from "../../components/PayBox";
-import { useNavigate } from "react-router-dom";
 
 export function Payment(){
   const [ value, setValue ] = useState(0)
-  const navigate = useNavigate()
 
   const [ allQuantity, setAllQuantity ] = useState(0)
 
@@ -36,10 +33,6 @@ export function Payment(){
     
     localStorage.setItem("@foodexplorer:dishes", JSON.stringify(filteredAllOrders))
   }
-  
-  function handleHome(){
-    navigate("/")
-  }
 
   useEffect(() => {
   const dish = JSON.parse(localStorage.getItem("@foodexplorer:dishes"))
@@ -48,7 +41,7 @@ export function Payment(){
     setAllOrders(dish)
     handleQuantity()
   }
-},[])
+},[allOrders])
 
   useEffect(()=> {
     let sum = 0
@@ -64,12 +57,7 @@ export function Payment(){
 
       <Content >
           <div className="orders"> 
-          <ButtonTransparent
-            onClick={handleHome}
-            Icon={MdOutlineArrowBackIos}
-            iconSize={20}
-            title='voltar'
-          />
+
             <h1>Meu pedido</h1>
 
             <div className="scroll">

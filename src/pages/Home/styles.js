@@ -17,31 +17,97 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   grid-area: content;
-  margin: 30px auto;
+
+  padding: 130px 10px 0;
+  margin: 0 auto 30px;
 
   width: 100%;
+  max-width: 1280px;
+
 
 
 .banner {
-  display: flex;
-  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 260px;
 
+  padding: 50px;
+
+  display: flex;
   justify-content: flex-end;
   align-items: center;
 
-  max-width: 70rem;
-  
   margin: 0 auto;
   
   border-radius: 8px;
-  
   background: linear-gradient(180deg, #091E26 0%, #00131C 100%);
 
 
-  div img {
-    width: 150%;
-    height: 50%;
+  img {
+    width: 600px;
+    position: absolute;
+    left: -50px;
+    bottom: 0;
+    }
+
+  h1 {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 1000px) {
+    padding: 50px 30px 0;
+
+    .banner {
+      height: 200px;
+      img {
+        width: 400px;
+        left: -40px;
+      }
+
+      .text-banner {
+        width: 50%;
+        h2 {
+          font-size: 2.5rem;
+        }
+        p {
+          font-size: 1.4rem;
+        }
+      }
+    }
   }
 
-}
+  @media (max-width: 426px) {
+    padding: 30px 15px 0;
+
+    .banner {
+      height: 130px;
+      img {
+        width: 250px;
+        left: 50px;
+      }
+      .text-banner {
+        position: absolute;
+        top: 10px;
+        left: 5px;
+        right: 0;
+        width: 100%;
+        h2 {
+          font-size: 3.5rem;
+        }
+        p {
+          font-size: 1.2rem;
+        }
+      }
+    }
+  }
+  @media (max-width: 360px) {
+    .banner {
+      .text-banner {
+        top: -10px;
+      }
+    }
+  }
+
+
 `;
