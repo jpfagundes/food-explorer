@@ -1,8 +1,6 @@
 import { Container } from "./styles";
-import { useAuth } from "../../hooks/auth"
 
-export function Button({title, icon, ...rest }){
-  const {loading} = useAuth()
+export function Button({title,loading = false, icon, ...rest }){
   return (
     <Container 
       type="button"
@@ -11,7 +9,7 @@ export function Button({title, icon, ...rest }){
       {...rest}
       >
         { icon ? icon : null }
-        {loading === true ? "Carregando" : title}
+        {loading ? "Carregando" : title}
     </Container>
   );
 }
