@@ -8,7 +8,7 @@
 ## Screenshot
 
  <h1 align="center">
-  <img alt="Food Explorer" title="Food Explorer" src="https://imgur.com/a/rGB8CwB" />
+  <img alt="Food Explorer" title="Food Explorer" src="/src/assets/images/food-explorer.png" />
 </h1>
 
 
@@ -24,8 +24,8 @@
 
 - To use this project you need to clone this repository and clone https://github.com/jpfagundes/backend-food-explorer 
 
+ Then in both : 
 ```bash
-  Then in both : 
   npm run dev
 ```
 
