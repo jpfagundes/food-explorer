@@ -1,18 +1,18 @@
 # Front-End Food Explorer
 
-## deploy 
+## Deploy 
 
 - <a>https://food-explorer-jp.netlify.app/ <a/>
-- Obs: Sometimes deploy is slow, please wait
 
 
- <h1 align="center">
-  <img alt="Food Explorer" title="Food Explorer" src="https://imgur.com/a/rGB8CwB" />
-</h1>
+## Screenshot
+
+![App Screenshot](https://imgur.com/a/rGB8CwB)
+
 
 ## Project description
 
-<p align="center">This project was created as the final challenge of the Rockeseat Explorer course .</p>
+<p align="center">This project was created as the final challenge of the Rockeseat Explorer course.</p>
 
 ### Features
 - [x] User registration
@@ -22,14 +22,16 @@
 
 - To use this project you need to clone this repository and clone https://github.com/jpfagundes/backend-food-explorer ,
   then in both : 
-- npm run dev
+```bash
+  npm run dev
+```
 
 ### User adm
 - Login: admin@email.com
 - Password: 123456
 
 
-### 🛠 Tecnologias
+### 🛠 Technologies
 The following tools were used in building the project
 
 - [React](https://pt-br.reactjs.org/)
@@ -40,9 +42,10 @@ The following tools were used in building the project
 
 ### Author
 
-- João Pedro Fagundes
+- [@jpfagundes](https://www.github.com/jpfagundes)
 
 ### Contact
 
-- [LinkedIn](https://www.linkedin.com/in/jpfagundes)
 - [Email] jpsafagundes@hotmail.com
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jpfagundes/)
