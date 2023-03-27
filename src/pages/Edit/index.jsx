@@ -111,7 +111,7 @@ export function Edit(){
             title= "voltar"
           />
 
-        <h2>Criar Prato</h2>
+        <h2>Editar Prato</h2>
 
         
         <div className="wrapper">

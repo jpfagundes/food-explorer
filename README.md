@@ -3,6 +3,7 @@
 ## Deploy 
 
 - <a>https://food-explorer-jp.netlify.app/ <a/>
+- Obs: Sometimes deploy is slow, please wait. 
 
 
 ## Screenshot
